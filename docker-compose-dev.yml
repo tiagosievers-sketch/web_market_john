@@ -1,0 +1,43 @@
+services:
+    2easy-ede-web-backend:
+       build:
+           context: .
+       container_name: 2easy-ede-web-backend
+       networks:
+         ede-web-net:
+           aliases:
+             - edeweb.test
+       hostname: 2easy-ede-web-backend
+       depends_on:
+         - mysql-ede-backend
+       volumes:
+           - ./:/var/www/html
+       ports:
+           - '27002:80'
+       expose:
+         - 27002
+    mysql-ede-backend:
+       image: mysql:8.0.30
+       restart: unless-stopped
+       tty: true
+       container_name: mysql-ede-backend
+       networks:
+         - ede-web-net
+       environment:
+           MYSQL_DATABASE: '2easy_database_backend'
+           MYSQL_ROOT_PASSWORD: '2easy_2024'
+           SERVICE_TAGS: 'dev'
+           SERVICE_NAME: 'mysql'
+       ports:
+           - 3311:3306
+       expose:
+           - 3311
+       volumes:
+           - mysql_backend_data:/var/lib/mysql
+volumes:
+    mysql_backend_data:
+networks:
+    ede-web-net:
+      name: ede-web-net
+      driver: bridge
+

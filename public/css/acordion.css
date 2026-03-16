@@ -1,0 +1,40 @@
+   /* Estilo para o botão do acordeão */
+   .accordion-button {
+       background-color: #fff;
+       /* Fundo branco */
+       color: #000;
+       /* Cor do texto */
+       border: 1px solid #ddd;
+       /* Borda clara */
+       box-shadow: none;
+       /* Remove sombra */
+   }
+
+   .accordion-button:not(.collapsed) {
+       background-color: #fff;
+       /* Leve fundo transparente quando expandido */
+       color: #000;
+       /* Cor do texto quando aberto */
+   }
+
+   /* Estilo para o item do acordeão */
+   .accordion-item {
+       border: 1px solid #ddd;
+       /* Borda clara */
+       background-color: transparent;
+       /* Fundo transparente do item */
+   }
+
+   /* Estilo para o corpo do acordeão */
+   .accordion-body {
+       background-color: transparent;
+       /* Fundo transparente do corpo */
+       color: #000;
+       /* Cor do texto */
+   }
+
+   /* Estilo para o cabeçalho do acordeão */
+   .accordion-header {
+       border-bottom: 1px solid #ddd;
+       /* Borda clara entre o cabeçalho e o corpo */
+   }

@@ -1,0 +1,8 @@
+<?php
+
+return [
+    'GATEWAY_TOKEN' => env('GATEWAY_TOKEN'),
+    'GATEWAY_LOGIN' => env('GATEWAY_LOGIN'),
+    'GATEWAY_PASSWORD' => env('GATEWAY_PASSWORD'),
+    'GATEWAY_BASEURL' => env('GATEWAY_BASEURL')
+];

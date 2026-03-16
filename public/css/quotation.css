@@ -1,0 +1,224 @@
+
+.stars {
+    display: inline-block;
+}
+
+.star {
+    font-size: 1.5rem;
+    color: #ccc;
+    /* Cor das estrelas vazias */
+}
+
+.star.filled {
+    color: gold;
+    /* Cor das estrelas preenchidas */
+}
+
+.hidden-card {
+    display: none;
+}
+
+/* remove member */
+.btn-icon {
+    padding: 0; /* Remove o padding para deixar o botão menor */
+    font-size: 0.75rem; /* Ajusta o tamanho do texto do botão para ficar menor */
+    line-height: 1; /* Mantém o alinhamento do texto */
+    width: 1.5rem; /* Define uma largura e altura fixas */
+    height: 1.5rem;
+    display: inline-flex; /* Alinha o ícone ao texto */
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Forma arredondada */
+}
+
+.remove-member-btn {
+    margin-left: 0.5rem; /* Adiciona um espaço entre o nome e o botão */
+}
+
+
+#selected-plans-alert {
+    z-index: 1050;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 10px;
+    background-color: #c6f7d0;
+    color: #0c5460;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Container interno para alinhamento */
+#selected-plans-alert .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Estilos para os alertas individuais dos planos */
+.plan-alert {
+    display: inline-block;
+    /* Permite que os alertas fiquem lado a lado */
+    margin-right: 10px;
+    /* Espaçamento entre os alertas */
+    margin-bottom: 5px;
+    /* Espaçamento entre as linhas de alertas */
+}
+
+.plan-alert {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+/* Aplicar Flexbox ao container dos alertas */
+#selected-plans-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Ajustar alinhamento do botão "Comparar" */
+#selected-plans-alert .container>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-bg {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    color: #fff;
+    /* Ajuste a cor do texto conforme necessário */
+}
+
+.bg-gold {
+    background-color: #FFD700;
+    /* Cor dourada */
+}
+
+.bg-silver {
+    background-color: #C0C0C0;
+    /* Cor prateada */
+}
+
+.bg-bronze {
+    background-color: #cd7f32;
+    /* Cor bronze */
+}
+
+.bg-platinum {
+    background-color: #e5e4e2;
+    /* Cor platina */
+}
+
+.bg-catastrophic {
+    background-color: #4b0082;
+    /* Cor roxa escura para Catastrophic */
+}
+
+
+.pagination-container {
+    display: flex;
+    /* Alinha os botões em uma linha */
+    justify-content: center;
+    /* Centraliza os botões */
+    margin-top: 20px;
+    /* Adiciona um espaço superior */
+}
+
+.pagination-container button {
+    margin: 0 5px;
+    /* Aumenta o espaçamento entre os botões */
+    padding: 8px 12px;
+    /* Ajusta o espaçamento interno dos botões */
+    border-radius: 4px;
+    /* Adiciona bordas arredondadas */
+    border: none;
+    /* Remove as bordas padrão */
+    cursor: pointer;
+    /* Define o cursor como pointer */
+    font-size: 14px;
+    /* Ajusta o tamanho da fonte */
+    transition: background-color 0.3s, opacity 0.3s;
+    /* Animações suaves para hover e disabled */
+}
+
+.pagination-container button.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination-container button.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.pagination-container button:hover:not(:disabled) {
+    opacity: 0.9;
+    /* Efeito hover para botões habilitados */
+}
+
+.pagination-container button:disabled {
+    opacity: 0.5;
+    /* Reduz a opacidade para indicar desativado */
+    cursor: not-allowed;
+    /* Altera o cursor para indicar que está desativado */
+}
+
+/* Ajuste geral de formatação */
+#savings-msg .card-title {
+    font-size: 1rem;
+    /* Aumenta o tamanho da fonte do título Savings */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Formatação do valor de Savings */
+#savings-msg #savings-value {
+    font-size: 1rem;
+    /* Aumenta o tamanho do valor */
+}
+
+/* Formatação do "/mo" */
+#savings-msg small {
+    font-weight: normal;
+    /* Normaliza o peso da fonte */
+    font-size: 0.6rem;
+    /* Deixa o "mo" menor */
+    font-weight: bold;
+    /* Deixa o "mo" em negrito */
+
+}
+
+/* Adiciona mais espaço entre o texto Savings: e o valor */
+#savings-msg .card-title span {
+    margin-right: 10px;
+    /* Espaçamento entre o texto Savings e o valor */
+}
+
+
+/* Ajustar o z-index da modal */
+.modal {
+    z-index: 1050; /* Valor padrão para a modal */
+    margin-bottom: 40px; /* Adiciona uma margem inferior para evitar sobreposição com a paginação */
+}
+
+/* Ajustar o z-index dos botões de paginação */
+.pagination-container {
+    position: fixed; /* Posição fixa para que esteja sempre visível */
+    bottom: 75px; /* Posição um pouco acima da parte inferior da página */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    width: auto; /* Ajusta a largura automaticamente */
+    z-index: 1100; /* Valor mais alto que o da modal */
+    display: flex; /* Flexbox para alinhar os botões */
+    justify-content: center; /* Centralizar os botões */
+    gap: 10px; /* Espaçamento entre os botões */
+    padding: 5px; /* Adiciona espaçamento interno */
+    background-color: white; /* Fundo branco para melhor visibilidade */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra para destaque */
+    display: none; /* Inicialmente escondido */
+}

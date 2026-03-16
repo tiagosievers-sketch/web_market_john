@@ -1,0 +1,33 @@
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip-text {
+        visibility: hidden;
+        width: 200px;
+        /* Largura da caixa de texto do tooltip */
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 10px;
+        /* Espaçamento interno da caixa de texto */
+        position: absolute;
+        z-index: 1;
+        bottom: -40px;
+        /* Posição abaixo do título */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s, bottom 0.3s;
+        /* Adiciona transição para suavizar o efeito */
+    }
+
+    .tooltip:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+        bottom: -60px;
+        /* Ajuste para melhor posicionamento visual */
+    }
