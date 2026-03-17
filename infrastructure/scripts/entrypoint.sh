@@ -4,6 +4,13 @@ set -e
 # Use Railway's PORT or default to 8080
 PORT="${PORT:-8080}"
 
+# Laravel storage: create dirs at runtime (sessions, views, cache)
+mkdir -p /var/www/html/storage/framework/sessions
+mkdir -p /var/www/html/storage/framework/views
+mkdir -p /var/www/html/storage/framework/cache/data
+chown -R www-data:www-data /var/www/html/storage
+chmod -R 775 /var/www/html/storage
+
 # Fix MPM: ensure only prefork is enabled (avoids "More than one MPM loaded")
 a2dismod mpm_event mpm_worker 2>/dev/null || true
 a2enmod mpm_prefork 2>/dev/null || true
