@@ -56,6 +56,9 @@ WORKDIR /var/www/html
 # Composer: install PHP dependencies (generates vendor/autoload.php)
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
+# Vite: build frontend assets (generates public/build/manifest.json)
+RUN npm install && npm run build
+
 # Laravel storage: create dirs that may be missing (sessions, cache, views)
 RUN mkdir -p /var/www/html/storage/framework/{sessions,views,cache/data} \
     && chown -R www-data:www-data /var/www/html/storage
