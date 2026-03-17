@@ -42,6 +42,9 @@ RUN pecl install redis && docker-php-ext-enable redis
 # Apache (port set at runtime via entrypoint from $PORT)
 COPY ${CONTEXT}/apache/default.conf /etc/apache2/sites-available/000-default.conf
 
+# Only one MPM allowed (fix "More than one MPM loaded")
+RUN a2dismod mpm_event mpm_worker 2>/dev/null || true; a2enmod mpm_prefork
+
 RUN a2enmod headers rewrite log_forensic
 RUN echo "ForensicLog /var/log/apache2/access.log" >> /etc/apache2/apache2.conf
 
