@@ -39,9 +39,8 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 
 RUN pecl install redis && docker-php-ext-enable redis
 
-# Apache
+# Apache (port set at runtime via entrypoint from $PORT)
 COPY ${CONTEXT}/apache/default.conf /etc/apache2/sites-available/000-default.conf
-RUN echo "Listen 8080" > /etc/apache2/ports.conf
 
 RUN a2enmod headers rewrite log_forensic
 RUN echo "ForensicLog /var/log/apache2/access.log" >> /etc/apache2/apache2.conf
@@ -67,4 +66,8 @@ COPY ${CONTEXT}/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.c
 COPY ./infrastructure/cron/crontab /etc/cron.d/laravel-scheduler
 RUN chmod 0644 /etc/cron.d/laravel-scheduler && crontab /etc/cron.d/laravel-scheduler
 
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Entrypoint: set Apache to listen on $PORT (Railway)
+COPY infrastructure/scripts/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+CMD ["/entrypoint.sh"]
