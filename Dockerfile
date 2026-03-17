@@ -56,6 +56,10 @@ WORKDIR /var/www/html
 # Composer: install PHP dependencies (generates vendor/autoload.php)
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
+# Laravel storage: create dirs that may be missing (sessions, cache, views)
+RUN mkdir -p /var/www/html/storage/framework/{sessions,views,cache/data} \
+    && chown -R www-data:www-data /var/www/html/storage
+
 # Ajuste de permissões
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/bootstrap/cache \
