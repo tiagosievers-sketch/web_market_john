@@ -53,6 +53,9 @@ COPY . /var/www/html/
 
 WORKDIR /var/www/html
 
+# Composer: install PHP dependencies (generates vendor/autoload.php)
+RUN composer install --no-dev --optimize-autoloader --no-interaction
+
 # Ajuste de permissões
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/bootstrap/cache \
