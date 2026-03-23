@@ -59,9 +59,16 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 # Vite: build frontend assets (generates public/build/manifest.json)
 RUN npm install && npm run build
 
-# Laravel storage: create dirs that may be missing (sessions, cache, views)
+# Laravel: uploads live under storage/app/public; web serves via public/storage symlink
+RUN mkdir -p /var/www/html/storage/app/public
+
+# Laravel storage: dirs for sessions, cache, views
 RUN mkdir -p /var/www/html/storage/framework/{sessions,views,cache/data} \
     && chown -R www-data:www-data /var/www/html/storage
+
+# Equivalent to php artisan storage:link (artisan may skip .env at build time)
+RUN cd /var/www/html && (php artisan storage:link --force 2>/dev/null \
+    || ln -sfn /var/www/html/storage/app/public /var/www/html/public/storage)
 
 # Ajuste de permissões
 RUN chown -R www-data:www-data /var/www/html \
