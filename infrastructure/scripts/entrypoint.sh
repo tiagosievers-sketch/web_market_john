@@ -11,6 +11,12 @@ mkdir -p /var/www/html/storage/framework/cache/data
 chown -R www-data:www-data /var/www/html/storage
 chmod -R 775 /var/www/html/storage
 
+# Laravel: public/storage -> storage/app/public (uploads, profile images in PDFs)
+mkdir -p /var/www/html/storage/app/public
+cd /var/www/html && (php artisan storage:link --force 2>/dev/null \
+    || ln -sfn /var/www/html/storage/app/public /var/www/html/public/storage)
+chown -h www-data:www-data /var/www/html/public/storage 2>/dev/null || true
+
 # Fix MPM: ensure only prefork is enabled (avoids "More than one MPM loaded")
 a2dismod mpm_event mpm_worker 2>/dev/null || true
 a2enmod mpm_prefork 2>/dev/null || true
