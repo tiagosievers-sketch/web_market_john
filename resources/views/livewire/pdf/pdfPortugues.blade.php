@@ -22,7 +22,7 @@
 
 <body>
 
-    <img src="data:image/png;base64,{{ base64_encode(file_get_contents($profileImagePath ?? public_path('img/Cotacao.png'))) }}"
+    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(($profileImagePath ?? null) && file_exists($profileImagePath) ? $profileImagePath : public_path('img/Cotacao.png'))) }}"
         class="full-screen-img" alt="img">
 
 
